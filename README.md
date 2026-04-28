@@ -1,98 +1,129 @@
-# FreeLance.eth — Decentralized Freelancing DApp
+# 💼 FreeLance.eth — Decentralized Freelancing DApp
 
-A modern, production-grade React frontend for a Web3 decentralized freelancing platform built with Ethers.js and Tailwind CSS.
+A Web3-based freelancing platform where clients and freelancers interact securely using smart contracts, eliminating middlemen and ensuring trust through escrow-based payments.
 
-## 🚀 Quick Start
+Built with **React, Solidity, Ethers.js, and Tailwind CSS**, this DApp allows users to post jobs, accept work, submit deliverables, and release payments transparently on the blockchain.
 
-### 1. Install Dependencies
+---
+
+## ✨ Features
+
+* 🔐 Wallet Authentication (MetaMask)
+* 👤 On-chain User Profiles (skills, bio, identity)
+* 📌 Post Freelance Jobs with Milestones
+* 🤝 Accept / Assign Jobs
+* 📤 Submit Work
+* 💸 Escrow-based Payment Release
+* ⭐ Freelancer Rating System
+* 📊 Job Dashboard (Active + Completed + Cancelled)
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** React.js, Tailwind CSS
+* **Blockchain:** Solidity
+* **Web3 Integration:** Ethers.js
+* **Wallet:** MetaMask
+* **Smart Contract Tools:** Hardhat / Remix
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/KhushbooMittal28/Dapp_Freelance_Platform.git
+cd Dapp_Freelance_Platform
+```
+
+### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
-### 2. Configure Your Contract
+### 3. Configure Smart Contract
 
-Open `src/contract.js` and replace the placeholders:
+Open `src/contract.js` and update:
 
 ```js
 export const CONTRACT_ADDRESS = "0xYourDeployedContractAddress";
-export const CONTRACT_ABI = [ /* paste your contract ABI here */ ];
+export const CONTRACT_ABI = [ /* paste ABI */ ];
 ```
 
-> **Tip:** Your ABI is in the `artifacts/` folder after Hardhat/Truffle compilation, or copy it from Remix.
+---
 
-### 3. Start the Dev Server
+### 4. Run the App
+
 ```bash
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — connect MetaMask and you're live.
+Visit: http://localhost:3000
 
 ---
 
-## 📁 File Structure
+## 📁 Project Structure
 
 ```
 src/
-├── App.js                  # Root component, wallet + contract logic
-├── contract.js             # ← Set your address & ABI here
-├── index.js
-├── index.css               # Tailwind imports + custom animations
-└── components/
-    ├── Navbar.js           # Sticky header with wallet display & tabs
-    ├── ProfileSection.js   # Create/view on-chain profile
-    ├── PostJobForm.js      # Post a job with milestone deadlines
-    ├── JobList.js          # Active jobs dashboard with filters
-    ├── JobCard.js          # Individual job card with all actions
-    ├── JobLogs.js          # Completed/cancelled job archive
-    └── Toast.js            # Notification toasts
+├── App.js
+├── contract.js
+├── components/
+│   ├── Navbar.js
+│   ├── ProfileSection.js
+│   ├── PostJobForm.js
+│   ├── JobList.js
+│   ├── JobCard.js
+│   ├── JobLogs.js
+│   └── Toast.js
 ```
 
 ---
 
-## 🎨 Design System
+## ⚙️ Smart Contract Functionalities
 
-| Color | Meaning |
-|-------|---------|
-| 🟦 Blue | Open jobs |
-| 🟡 Yellow/Amber | Assigned jobs |
-| 🟢 Green | Completed |
-| 🔴 Red | Cancelled |
-
-**Font:** Plus Jakarta Sans  
-**Theme:** Dark, minimal, Web3-native
+* Profile creation & retrieval
+* Job posting with milestones
+* Freelancer assignment
+* Work submission
+* Escrow payment release
+* Rating system
 
 ---
 
-## ⛓️ Smart Contract Interface
+## 🧠 Key Concept
 
-The frontend expects these functions on your contract:
-
-```solidity
-// Profile
-function createProfile(string name, string skills, string bio) external;
-function getProfile(address user) external view returns (string, string, string);
-
-// Jobs
-function postJob(string description, uint milestones, uint[] deadlines) external payable;
-function acceptJob(uint jobId) external;
-function submitWork(uint jobId) external;
-function releaseMilestone(uint jobId) external;
-function removeFreelancer(uint jobId) external;
-function rateFreelancer(uint jobId, uint8 rating) external;
-
-// Views
-function jobCount() external view returns (uint);
-function getJob(uint jobId) external view returns (...);
-```
-
-If your contract uses different function names or signatures, update them in `src/App.js` and `src/contract.js`.
+This project uses an **Escrow-based payment model**, where funds are locked in a smart contract and only released when milestones are completed — ensuring trust between client and freelancer.
 
 ---
 
-## 🔧 Troubleshooting
+## ⚠️ Troubleshooting
 
-**"MetaMask not detected"** — Install MetaMask browser extension.
+* MetaMask not detected → Install extension
+* Wrong network → Switch to correct blockchain network
+* Data not loading → Verify contract address & ABI
 
-**Transaction reverts** — Ensure you're on the correct network (match deployed contract's chain).
+---
 
-**Profile/Jobs not loading** — Check `CONTRACT_ADDRESS` is correct and `CONTRACT_ABI` matches your deployed contract.
+## 👩‍💻 Author
+
+**Khushboo Mittal**
+GitHub: https://github.com/KhushbooMittal28
+
+---
+
+## 🌟 Future Improvements
+
+* 📱 Mobile responsiveness
+* 🔍 Job search & filtering
+* 📦 IPFS integration for file uploads
+* 🔔 Real-time notifications
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub — it helps!
